@@ -4,7 +4,7 @@ import {Ionicons} from '@expo/vector-icons';
 
 export default class RoundButton extends Component {
 
-    static defaultProps = {
+    static defaultProps = { 
         title:'Button',
         onPress:()=>{},
         color:'white'
@@ -12,7 +12,22 @@ export default class RoundButton extends Component {
 
     render(){
         return(
-
+            <TouchableOpacity 
+            style={[styles.touchWrap , this.props.style]}
+            onPress ={this.props.onPress}
+            >
+            <View style={styles.container}>
+                {this.props.icoName && (
+                    <Ionicons 
+                        style={{marginRight :10}}
+                        name={this.props.icoName}
+                        color ={this.props.color}
+                        size={25}
+                    />
+                )}
+                <Text style={styles.title}>{this.props.title}</Text>
+            </View>
+            </TouchableOpacity>
         )
     }
 }
@@ -23,9 +38,9 @@ const styles = StyleSheet.create({
         height:50
     },
     container : {
-        flexGrow : 1,
+        flexGrow:1,
         flexDirection:'row',
-        alignItems : 'center',
+        alignItems :'center',
         borderColor:'#aaa',
         backgroundColor:'tomato',
         justifyContent:'center',
